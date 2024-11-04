@@ -5,9 +5,9 @@
  */
 
 import React from 'react';
-import ToDoFrom from './ToDoForm';
+import ToDoForm from './ToDoForm';
 import ToDoList from './ToDoList';
-import {usesState} from 'react';
+import {useState} from 'react';
 import { SafeAreaView} from 'react-native';
 
 export default function App() {
@@ -18,11 +18,16 @@ export default function App() {
     'Walk dog'
   ]);
 
+  const addTask = (taskText) => {
+    setTasks([...tasks, taskText]);
+  };
+
   return (
     <div>
       <SafeAreaView>
         <ToDoList tasks = {tasks} />
-        <ToDoFrom setTasks = {setTasks} />
+        <ToDoForm setTasks = {setTasks} />
+        <ToDoForm addTask = {addTask} />
       </SafeAreaView>
     </div>
   );
